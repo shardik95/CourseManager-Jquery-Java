@@ -4,7 +4,9 @@
     <title>User-Admin</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet"/>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-	<script src="user-admin.controller.client.js"></script>
+    <script src="../../services/user.service.client.js"></script>
+    <script src="user-admin.controller.client.js"></script>
+
 </head>
 <body>
     <div class="container">
@@ -20,11 +22,11 @@
             <th></th>
         </tr>
         <tr>
-            <th><input type="text" class="form-control" placeholder="Jdoe"/></th>
-            <th><input type="text" class="form-control" placeholder="****"/></th>
-            <th><input type="text" class="form-control" placeholder="John"/></th>
-            <th><input type="text" class="form-control" placeholder="Doe"/></th>
-            <td><button class="btn btn-success">Create</button></td>
+            <th><input type="text" id="UsernameFld" class="form-control" placeholder="Jdoe"/></th>
+            <th><input type="text" id="PasswordFld" class="form-control" placeholder="****"/></th>
+            <th><input type="text" id="FirstNameFld" class="form-control" placeholder="John"/></th>
+            <th><input type="text" id="LastNameFld" class="form-control" placeholder="Doe"/></th>
+            <td><button id="createUser" class="btn btn-success">Create</button></td>
         </tr>
         </thead>
         <tbody>
