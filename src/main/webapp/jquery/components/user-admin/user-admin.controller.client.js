@@ -9,7 +9,7 @@
     function main(){
         jQuery("h1#title").css('color','red').html('User-Administration');
 
-        template=$("#template");
+        template=$(".template");
         tbody=$("tbody");
 
         $("#createUser").click(createUser);
@@ -40,12 +40,31 @@
     }
 
     function renderUsers(users){
+        tbody.empty();
         for(i=0;i<users.length;i++){
             var user=users[i];
-            var tr1=template.clone();
-            tr1.find(".username").html(user.username);
-            tbody.append(tr1);
+            var clone=template.clone();
+
+            clone.attr('id',user.id);
+
+            clone.find(".delete").click(deleteUser);
+            clone.find(".edit").click(editUser);
+
+            clone.find(".username").html(user.username);
+            tbody.append(clone);
         }
+    }
+
+    function deleteUser(event){
+        var deletebtn =$(event.currentTarget);
+        var userId =deletebtn.parent().parent().attr("id");
+        userService.deleteUser(userId)
+            .then(findAllUsers);
+    }
+
+
+    function editUser(event){
+        console.log(event);
     }
 
 
