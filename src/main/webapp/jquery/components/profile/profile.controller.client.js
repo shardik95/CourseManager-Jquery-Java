@@ -13,7 +13,7 @@
         $lastName=$("#lastName");
         $update=$("#updateBtn")
             .click(updateUser);
-        findUserById(172);
+        //findUserById(172);
 
     };
 
@@ -23,7 +23,7 @@
             lastName:$lastName.val()
         };
 
-        userService.updateUser(172,user).then(success);
+        //userService.updateUser(172,user).then(success);
 
     }
 

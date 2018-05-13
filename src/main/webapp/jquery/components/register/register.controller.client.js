@@ -20,14 +20,19 @@
             password:$passwordFld,
         };
 
-        userService.register(user).then(function(response){
-            if(response===null){
-                alert("user already exists");
-            }
-            else
-                alert("Success!");
-        })
+        userService.register(user).then(function (response) {
+            return response.text();
+        }).then(function(text){
+            return text.length;
+        }).then(success);
 
+    }
+
+    function success(length){
+        if(length>0)
+            alert("Registered Successfully!");
+        else
+            alert("User already exists");
     }
 
 

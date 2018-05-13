@@ -24,6 +24,17 @@ public class UserService {
 	UserRepository repository;
 	
 	
+	@PostMapping("/api/login")
+	public User login(@RequestBody User user) {
+		List<User> u = (List<User>) repository.findUserByCredentials(user.getUsername(), user.getPassword());
+		//System.out.println(u.size());
+		if(u.isEmpty())
+			return null;
+		else return user;
+	}
+
+	
+	
 	@PutMapping("/api/user/{userId}")
 	public User updateUser(@PathVariable("userId") int id, @RequestBody User newUser) {
 		Optional<User> data = repository.findById(id);
