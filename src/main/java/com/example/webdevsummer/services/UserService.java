@@ -1,5 +1,6 @@
 package com.example.webdevsummer.services;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.webdevsummer.repositories.UserRepository;
@@ -37,6 +39,20 @@ public class UserService {
 		return null;
 	}
 	
+	//@GetMapping("/api/register/{userName}")
+	public List<User> findUserByUsername(String username) {
+		return  (List<User>) repository.findUserByUsername(username);
+	}
+	
+	@PostMapping("/api/register")
+	public User register(@RequestBody User user) {
+		List users = findUserByUsername(user.getUsername());
+		if(!users.isEmpty())
+			return null;
+		else
+			return createUser(user);
+	}
+	
 	@DeleteMapping("/api/user/{userId}")
 	public void deleteUser(@PathVariable("userId") int id) {
 		 repository.deleteById(id);
@@ -49,8 +65,12 @@ public class UserService {
 	
 	
 	@GetMapping("/api/user")
-	public List<User> findAllUsers(){
-		return (List<User>) repository.findAll();
+	public List<User> findAllUsers(@RequestParam(name="username", required=false) String username) {
+			if(username != null) {
+				return (List<User>) repository.findUserByUsername(username);
+			}
+			return (List<User>) repository.findAll();
+
 	}
 	
 	@GetMapping("/api/user/{userId}")
