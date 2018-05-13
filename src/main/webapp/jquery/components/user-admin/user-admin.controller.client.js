@@ -7,7 +7,6 @@
     var userService=new UserServiceClient();
 
     function main(){
-        jQuery("h1#title").css('color','red').html('User-Administration');
 
         template=$(".template");
         tbody=$("tbody");
@@ -40,7 +39,7 @@
     }
 
     function renderUsers(users){
-        tbody.empty();
+        //tbody.empty();
         for(i=0;i<users.length;i++){
             var user=users[i];
             var clone=template.clone();
