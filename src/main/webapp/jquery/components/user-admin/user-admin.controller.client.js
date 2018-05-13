@@ -2,19 +2,55 @@
 
     jQuery(main);
 
-    var template;
-    var tbody;
+    var $usernameFld, $passwordFld;
+    var $removeBtn, $editBtn, $createBtn, $updateBtn;
+    var $firstNameFld, $lastNameFld;
+    var $userRowTemplate, $tbody;
+    var $userRole,$tbodyform;
     var userService=new UserServiceClient();
 
     function main(){
 
-        template=$(".template");
-        tbody=$("tbody");
-
-        $("#createUser").click(createUser);
-
+        $userRowTemplate=$(".wbdv-template");
+        $tbody=$(".wbdv-tbody");
+        $tbodyform=$(".wbdv-form");
+        $createBtn= $(".create");
+        $createBtn.click(createUser);
+        $updateBtn=$(".update");
+        $updateBtn.click(updateUser);
         findAllUsers();
 
+    }
+
+    function findUserById(userId){
+        return userService.findUserById(userId);
+    }
+
+    function updateUser(){
+
+        $usernameFld = $("#usernameFld").val();
+        $firstNameFld =$("#firstNameFld").val();
+        $lastNameFld= $("#lastNameFld").val();
+        $userRole=$("#roleFld").val();
+
+        var user={
+            username:$usernameFld,
+            firstName:$firstNameFld,
+            lastName:$lastNameFld,
+            role:$userRole
+        };
+
+        var userId=$tbodyform.attr("id");
+        userService.updateUser(userId,user).then(clearform).then(findAllUsers);
+        $tbodyform.removeAttr("id");
+
+    }
+
+    function clearform(){
+        $usernameFld = $("#usernameFld").val("");
+        $passwordFld = $("#passwordFld").val("");
+        $firstNameFld =$("#firstNameFld").val("");
+        $lastNameFld= $("#lastNameFld").val("");
     }
 
     function findAllUsers(){
@@ -22,48 +58,65 @@
     }
 
     function createUser(){
-        var username = $("#UsernameFld").val();
-        var password = $("#PasswordFld").val();
-        var firstname =$("#FirstNameFld").val();
-        var lastname= $("#LastNameFld").val();
+
+        $usernameFld = $("#usernameFld").val();
+        $passwordFld = $("#passwordFld").val();
+        $firstNameFld =$("#firstNameFld").val();
+        $lastNameFld= $("#lastNameFld").val();
+        $userRole=$("#roleFld").val();
 
         var user={
-          username: username,
-          password: password,
-          firstName: firstname,
-          lastName: lastname
+          username: $usernameFld,
+          password: $passwordFld,
+          firstName: $firstNameFld,
+          lastName: $lastNameFld,
+            role:$userRole
         };
 
         userService.createUser(user).then(findAllUsers);
 
     }
 
+
     function renderUsers(users){
-        //tbody.empty();
+        $tbody.empty();
         for(i=0;i<users.length;i++){
             var user=users[i];
-            var clone=template.clone();
-
+            var clone=$userRowTemplate.clone();
             clone.attr('id',user.id);
-
-            clone.find(".delete").click(deleteUser);
+            clone.find(".remove").click(deleteUser);
             clone.find(".edit").click(editUser);
 
-            clone.find(".username").html(user.username);
-            tbody.append(clone);
+            clone.find(".wbdv-username").html(user.username);
+            clone.find(".wbdv-first-name").html(user.firstName);
+            clone.find(".wbdv-last-name").html(user.lastName);
+            clone.find(".wbdv-role").html(user.role);
+            $tbody.append(clone);
         }
     }
 
     function deleteUser(event){
-        var deletebtn =$(event.currentTarget);
-        var userId =deletebtn.parent().parent().attr("id");
+
+        $removeBtn =$(event.currentTarget);
+        var userId =$removeBtn.parent().parent().parent().attr("id");
         userService.deleteUser(userId)
             .then(findAllUsers);
     }
 
 
     function editUser(event){
-        console.log(event);
+        $editBtn=$(event.currentTarget);
+        var userId =$editBtn.parent().parent().parent().attr("id");
+        $tbodyform.attr("id",userId);
+        findUserById(userId).then(renderUser);
+
+    }
+
+    function renderUser(user){
+        $tbodyform.find("#usernameFld").val(user.username);
+        $tbodyform.find("#firstNameFld").val(user.firstName);
+        $tbodyform.find("#lastNameFld").val(user.lastName);
+        $tbodyform.find("#roleFld").val(user.role);
     }
 
 
