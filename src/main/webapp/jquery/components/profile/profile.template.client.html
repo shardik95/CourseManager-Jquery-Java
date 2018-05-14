@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -14,31 +15,45 @@
 
     <form>
         <div class="form-group row">
-            <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+            <label for="usernameFld" class="col-sm-2 col-form-label">Username</label>
             <div class="col-sm-10">
-                <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
+                <input type="text" readonly class="form-control" id="usernameFld" placeholder="Alice">
             </div>
         </div>
         <div class="form-group row">
-            <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+            <label for="phoneFld" class="col-sm-2 col-form-label">Phone</label>
             <div class="col-sm-10">
-                <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                <input type="tel" class="form-control" id="phoneFld" placeholder="(555)123-4567">
             </div>
         </div>
         <div class="form-group row">
-            <label for="firstName" class="col-sm-2 col-form-label">First Name</label>
+            <label for="emailFld" class="col-sm-2 col-form-label">Email</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="firstName" placeholder="FirstName">
+                <input type="email" class="form-control" id="emailFld" placeholder="alice@wonderland.com">
             </div>
         </div>
         <div class="form-group row">
-            <label for="lastName" class="col-sm-2 col-form-label">Last Name</label>
+            <label for="roleFld" class="col-sm-2 col-form-label">Role</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="lastName" placeholder="LastName">
+            <select id="roleFld" class="form-control">
+                 <option value="FACULTY">Faculty</option>
+                 <option value="STUDENT">Student</option>
+            </select>
             </div>
         </div>
-        <button id="updateBtn" type="button" class="btn btn-primary btn-block">Update</button>
-
+        <div class="form-group row">
+            <label for="dateOfBirthFld" class="col-sm-2 col-form-label">Date of Birth</label>
+            <div class="col-sm-10">
+                <input type="date" class="form-control" id="dateOfBirthFld" placeholder="alice@wonderland.com">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">&nbsp</label>
+            <div class="col-sm-10">
+                <button id="updateBtn" type="button" class="btn btn-success btn-block">Update</button>
+                <button id="LogoutBtn" type="button" class="btn btn-danger btn-block">Logout</button>
+            </div>
+        </div>
     </form>
 
 </div>

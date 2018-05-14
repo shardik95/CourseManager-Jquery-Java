@@ -1,6 +1,6 @@
 (function () {
     var $usernameFld, $passwordFld;
-    var $loginBtn;
+    var $loginBtn, $userdata;
     var userService = new UserServiceClient();
     $(main);
 
@@ -22,16 +22,25 @@
         };
 
         userService.login(user).then(function (response) {
-            return response.text();
+            var text=response.text();
+            return text;
         }).then(function(text){
-            return text.length;
+            var len=text.length;
+            if(len>0) {
+                var json = JSON.parse(text);
+                console.log(json);
+                $userdata=json.id;
+            }
+            return len;
         }).then(success);
 
     }
 
     function success(length){
-        if(length>0)
-            window.location.href = "../profile/profile.template.client.html";
+        //console.log($userdata);
+        if(length>0){
+            window.location.href = "../profile/profile.template.client.html?userid="+$userdata;
+        }
         else
             alert("cannot login! User not found");
     }

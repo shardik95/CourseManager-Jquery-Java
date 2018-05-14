@@ -41,7 +41,7 @@
         };
 
         var userId=$tbodyform.attr("id");
-        userService.updateUser(userId,user).then(clearform).then(findAllUsers);
+        userService.updateProfile(userId,user).then(clearform).then(findAllUsers);
         $tbodyform.removeAttr("id");
 
     }

@@ -30,25 +30,23 @@ public class UserService {
 		//System.out.println(u.size());
 		if(u.isEmpty())
 			return null;
-		else return user;
+		else return u.get(0);
 	}
 
 	
 	
-	@PutMapping("/api/user/{userId}")
-	public User updateUser(@PathVariable("userId") int id, @RequestBody User newUser) {
-		Optional<User> data = repository.findById(id);
-		if(data.isPresent()) {
-			User user=data.get();
-			user.setUsername(newUser.getUsername());
-			user.setFirstName(newUser.getFirstName());
-			user.setLastName(newUser.getLastName());
-			user.setRole(newUser.getRole());
-			repository.save(user);
-			return user;
-		}	
-		return null;
+	@PutMapping("/api/profile")
+	public User updateProfile(@RequestBody User newUser) {
+		List<User> data = (List<User>) repository.findUserByUsername(newUser.getUsername());
+		User user=data.get(0);
+		user.setPhone(newUser.getPhone());
+		user.setEmail(newUser.getEmail());
+		user.setRole(newUser.getRole());
+		user.setDateOfBirth(newUser.getDateOfBirth());
+		repository.save(user);
+		return newUser;
 	}
+	
 	
 	//@GetMapping("/api/register/{userName}")
 	public List<User> findUserByUsername(String username) {
