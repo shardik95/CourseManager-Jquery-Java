@@ -6,6 +6,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href=
             "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="register.style.client.css">
     <script src="../../models/user.model.client.js"></script>
     <script src="../../services/user.service.client.js"></script>
     <script src="register.controller.client.js"></script>
@@ -13,7 +14,7 @@
 </head>
 <body>
 <div class="container">
-    <h1 id="title">Sign Up</h1>
+    <h1 id="title"><i class="fa fa-sign-in"></i>Sign Up</h1>
     <div class="alert alert-success" role="alert" style="display: none" id="creation">
         User created successfully!
     </div>
@@ -25,21 +26,21 @@
     </div>
     <form>
         <div class="form-group row">
-            <label for="usernameFld" class="col-sm-2 col-form-label">Username</label>
+            <label for="usernameFld" class="col-sm-2 col-form-label sideway">Username</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="usernameFld" placeholder="Alice">
+                <input type="text" class="form-control web-dev-form" id="usernameFld" placeholder="Alice">
             </div>
         </div>
         <div class="form-group row">
-            <label for="passwordFld" class="col-sm-2 col-form-label">Password</label>
+            <label for="passwordFld" class="col-sm-2 col-form-label sideway">Password</label>
             <div class="col-sm-10">
-                <input type="password" class="form-control" id="passwordFld" placeholder="12345qDDc">
+                <input type="password" class="form-control web-dev-form" id="passwordFld" placeholder="12345qDDc">
             </div>
         </div>
         <div class="form-group row">
-            <label for="verifyPasswordFld" class="col-sm-2 col-form-label">Verify Password</label>
+            <label for="verifyPasswordFld" class="col-sm-2 col-form-label sideway">Verify Password</label>
             <div class="col-sm-10">
-                <input type="password" class="form-control" id="verifyPasswordFld" placeholder="12345qDDc">
+                <input type="password" class="form-control web-dev-form" id="verifyPasswordFld" placeholder="12345qDDc">
             </div>
         </div>
         <div class="form-group row">
@@ -49,8 +50,8 @@
                 <a href="../login/login.template.client.html">Login</a>
             </div>
         </div>
-    </form>
 
+    </form>
 </div>
 </body>
 </html>

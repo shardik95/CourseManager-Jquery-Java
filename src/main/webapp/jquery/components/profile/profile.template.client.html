@@ -5,6 +5,9 @@
     <title>User-Admin</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet"/>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="profile.style.client.css">
+    <link rel="stylesheet" href=
+            "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <script src="../../models/user.model.client.js"></script>
     <script src="../../services/user.service.client.js"></script>
     <script src="profile.controller.client.js"></script>
@@ -12,7 +15,7 @@
 </head>
 <body>
 <div class="container">
-    <h1 id="title">Profile</h1>
+    <h1 id="title"><i class="fa fa-user"></i>Profile</h1>
     <div class="alert alert-success" role="alert" style="display: none" id="saved">
         Profile Saved Successfully!
     </div>
@@ -24,48 +27,48 @@
     </div>
     <form>
         <div class="form-group row">
-            <label for="usernameFld" class="col-sm-2 col-form-label">Username</label>
+            <label for="usernameFld" class="col-sm-2 col-form-label sideway">Username</label>
             <div class="col-sm-10">
-                <input type="text" readonly class="form-control" id="usernameFld" placeholder="alice">
+                <input type="text" readonly class="form-control web-dev-form" id="usernameFld" placeholder="alice">
             </div>
         </div>
         <div class="form-group row">
-            <label for="firstNameFld" class="col-sm-2 col-form-label">FirstName</label>
+            <label for="firstNameFld" class="col-sm-2 col-form-label sideway">FirstName</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="firstNameFld" placeholder="Alice">
+                <input type="text" class="form-control web-dev-form" id="firstNameFld" placeholder="Alice">
             </div>
         </div>
         <div class="form-group row">
-            <label for="lastNameFld" class="col-sm-2 col-form-label">LastName</label>
+            <label for="lastNameFld" class="col-sm-2 col-form-label sideway">LastName</label>
             <div class="col-sm-10">
-                <input type="text"  class="form-control" id="lastNameFld" placeholder="Wonderland">
+                <input type="text"  class="form-control web-dev-form" id="lastNameFld" placeholder="Wonderland">
             </div>
         </div>
         <div class="form-group row">
-            <label for="phoneFld" class="col-sm-2 col-form-label">Phone</label>
+            <label for="phoneFld" class="col-sm-2 col-form-label sideway">Phone</label>
             <div class="col-sm-10">
-                <input type="tel" class="form-control" id="phoneFld" placeholder="(555)123-4567">
+                <input type="tel" class="form-control web-dev-form" id="phoneFld" placeholder="(555)123-4567">
             </div>
         </div>
         <div class="form-group row">
-            <label for="emailFld" class="col-sm-2 col-form-label">Email</label>
+            <label for="emailFld" class="col-sm-2 col-form-label sideway">Email</label>
             <div class="col-sm-10">
-                <input type="email" class="form-control" id="emailFld" placeholder="alice@wonderland.com">
+                <input type="email" class="form-control web-dev-form" id="emailFld" placeholder="alice@wonderland.com">
             </div>
         </div>
         <div class="form-group row">
-            <label for="roleFld" class="col-sm-2 col-form-label">Role</label>
-            <div class="col-sm-10">
-            <select id="roleFld" class="form-control">
+            <label for="roleFld" class="col-sm-2 col-form-label sideway">Role</label>
+            <div class="col-sm-10 ">
+            <select id="roleFld" class="form-control web-dev-form">
                  <option value="FACULTY">Faculty</option>
                  <option value="STUDENT">Student</option>
             </select>
             </div>
         </div>
         <div class="form-group row">
-            <label for="dateOfBirthFld" class="col-sm-2 col-form-label">Date of Birth</label>
+            <label for="dateOfBirthFld" class="col-sm-2 col-form-label sideway">Date of Birth</label>
             <div class="col-sm-10">
-                <input type="date" class="form-control" id="dateOfBirthFld" placeholder="alice@wonderland.com">
+                <input type="date" class="form-control web-dev-form" id="dateOfBirthFld" placeholder="alice@wonderland.com">
             </div>
         </div>
         <div class="form-group row">
