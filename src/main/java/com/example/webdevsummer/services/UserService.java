@@ -1,6 +1,5 @@
 package com.example.webdevsummer.services;
 
-import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,22 +22,34 @@ public class UserService {
 	@Autowired
 	UserRepository repository;
 	
+	@PutMapping("/api/user/{userId}")
+	public User updateUser(@PathVariable("userId") int id,@RequestBody User newUser) {
+		Optional<User> user=repository.findById(id);
+		if(user.isPresent()) {
+			User data=user.get();
+			data.setUsername(newUser.getUsername());
+			data.setFirstName(newUser.getFirstName());
+			data.setLastName(newUser.getLastName());
+			data.setRole(newUser.getRole());
+			return repository.save(data);
+		}
+		else return null;
+	}
 	
 	@PostMapping("/api/login")
 	public User login(@RequestBody User user) {
 		List<User> u = (List<User>) repository.findUserByCredentials(user.getUsername(), user.getPassword());
-		//System.out.println(u.size());
 		if(u.isEmpty())
 			return null;
 		else return u.get(0);
 	}
 
-	
-	
 	@PutMapping("/api/profile")
 	public User updateProfile(@RequestBody User newUser) {
 		List<User> data = (List<User>) repository.findUserByUsername(newUser.getUsername());
 		User user=data.get(0);
+		user.setFirstName(newUser.getFirstName());
+		user.setLastName(newUser.getLastName());
 		user.setPhone(newUser.getPhone());
 		user.setEmail(newUser.getEmail());
 		user.setRole(newUser.getRole());
@@ -47,15 +58,13 @@ public class UserService {
 		return newUser;
 	}
 	
-	
-	//@GetMapping("/api/register/{userName}")
 	public List<User> findUserByUsername(String username) {
 		return  (List<User>) repository.findUserByUsername(username);
 	}
 	
 	@PostMapping("/api/register")
 	public User register(@RequestBody User user) {
-		List users = findUserByUsername(user.getUsername());
+		List<User> users = findUserByUsername(user.getUsername());
 		if(!users.isEmpty())
 			return null;
 		else
@@ -72,14 +81,14 @@ public class UserService {
 		return repository.save(user);
 	}
 	
-	
 	@GetMapping("/api/user")
-	public List<User> findAllUsers(@RequestParam(name="username", required=false) String username) {
-			if(username != null) {
+	public List<User> findAllUsers(@RequestParam(name="username", required=false) String username,@RequestParam(name="password", required=false) String password) {
+			if(username != null && password != null) {
+				return (List<User>) repository.findUserByCredentials(username, password);
+			} else if(username != null) {
 				return (List<User>) repository.findUserByUsername(username);
 			}
 			return (List<User>) repository.findAll();
-
 	}
 	
 	@GetMapping("/api/user/{userId}")

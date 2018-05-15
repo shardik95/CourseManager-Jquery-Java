@@ -33,15 +33,17 @@
         $lastNameFld= $("#lastNameFld").val();
         $userRole=$("#roleFld").val();
 
-        var user={
+        var user=new User($usernameFld,null,null,$firstNameFld,$lastNameFld,null,$userRole,null);
+
+        /*var user={
             username:$usernameFld,
             firstName:$firstNameFld,
             lastName:$lastNameFld,
             role:$userRole
-        };
+        };*/
 
         var userId=$tbodyform.attr("id");
-        userService.updateProfile(userId,user).then(clearform).then(findAllUsers);
+        userService.updateUser(userId,user).then(clearform).then(findAllUsers);
         $tbodyform.removeAttr("id");
 
     }
@@ -65,13 +67,15 @@
         $lastNameFld= $("#lastNameFld").val();
         $userRole=$("#roleFld").val();
 
-        var user={
+        /*var user={
           username: $usernameFld,
           password: $passwordFld,
           firstName: $firstNameFld,
           lastName: $lastNameFld,
             role:$userRole
-        };
+        };*/
+
+        var user=new User($usernameFld,$passwordFld,null,$firstNameFld,$lastNameFld,null,$userRole,null);
 
         userService.createUser(user).then(findAllUsers);
 
@@ -86,7 +90,6 @@
             clone.attr('id',user.id);
             clone.find(".remove").click(deleteUser);
             clone.find(".edit").click(editUser);
-
             clone.find(".wbdv-username").html(user.username);
             clone.find(".wbdv-first-name").html(user.firstName);
             clone.find(".wbdv-last-name").html(user.lastName);

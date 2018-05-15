@@ -2,24 +2,28 @@
     var $usernameFld, $passwordFld;
     var $loginBtn, $userdata;
     var userService = new UserServiceClient();
+
     $(main);
 
     function main() {
         $usernameFld=$("#username");
         $passwordFld=$("#password");
         $loginBtn=$("#signin");
-
         $loginBtn.click(login);
 
     }
+
+
     function login() {
         $usernameFld=$("#username").val();
         $passwordFld=$("#password").val();
 
-        var user ={
+        var user=new User($usernameFld,$passwordFld,null,null,null,null,null,null);
+
+        /*var user ={
             username:$usernameFld,
             password:$passwordFld
-        };
+        };*/
 
         userService.login(user).then(function (response) {
             var text=response.text();
@@ -37,12 +41,11 @@
     }
 
     function success(length){
-        //console.log($userdata);
         if(length>0){
             window.location.href = "../profile/profile.template.client.html?userid="+$userdata;
         }
         else
-            alert("cannot login! User not found");
+            $("#cannotLogin").css("display","block");
     }
 
 })();

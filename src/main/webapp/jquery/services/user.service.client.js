@@ -6,6 +6,7 @@ function UserServiceClient(){
     this.updateProfile = updateProfile;
     this.register=register;
     this.login = login;
+    this.updateUser=updateUser;
     this.url =
         'http://localhost:8080/api/user';
     this.registerUrl =
@@ -13,6 +14,17 @@ function UserServiceClient(){
     this.loginUrl='http://localhost:8080/api/login';
     this.profileUrl='http://localhost:8080/api/profile';
     var self = this;
+
+
+    function updateUser(userId,user){
+        return fetch(self.url+"/"+userId,{
+            method:'put',
+            body: JSON.stringify(user),
+            headers: {
+                'content-type':'application/json'
+            }
+        });
+    }
 
 
     function login(user) {

@@ -6,7 +6,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href=
             "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
-
+    <script src="../../models/user.model.client.js"></script>
     <script src="../../services/user.service.client.js"></script>
     <script src="register.controller.client.js"></script>
 
@@ -14,7 +14,15 @@
 <body>
 <div class="container">
     <h1 id="title">Sign Up</h1>
-
+    <div class="alert alert-success" role="alert" style="display: none" id="creation">
+        User created successfully!
+    </div>
+    <div class="alert alert-danger" role="alert" style="display: none" id="cannotCreate">
+        Cannot create user!, user already exists
+    </div>
+    <div class="alert alert-danger" role="alert" style="display: none" id="matchPassword">
+        Passwords dont match!
+    </div>
     <form>
         <div class="form-group row">
             <label for="usernameFld" class="col-sm-2 col-form-label">Username</label>

@@ -6,7 +6,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href=
             "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
-
+    <script src="../../models/user.model.client.js"></script>
     <script src="../../services/user.service.client.js"></script>
     <script src="login.controller.client.js"></script>
 
@@ -15,6 +15,9 @@
 
 <div class="container">
     <h1>Sign In</h1>
+    <div class="alert alert-danger" role="alert" style="display: none" id="cannotLogin">
+        Cannot Log in, User not found!
+    </div>
     <form>
         <div class="form-group row">
             <label for="username" class="col-sm-2 col-form-label">

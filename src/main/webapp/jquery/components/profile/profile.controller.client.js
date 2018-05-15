@@ -1,7 +1,7 @@
 (function () {
 
     var $usernameFld,$phoneFld,$emailFld,$roleFld,$dateOfBirthFld;
-    var id, $logoutbtn;
+    var id, $firstNameFld,$lastNameFld;
 
     $(init);
 
@@ -22,20 +22,25 @@
 
     function updateProfile(){
         $usernameFld=$("#usernameFld").val();
+        $firstNameFld=$("#firstNameFld").val();
+        $lastNameFld=$("#lastNameFld").val();
         $phoneFld=$("#phoneFld").val();
         $emailFld=$("#emailFld").val();
         $roleFld=$("#roleFld").val();
         $dateOfBirthFld= $("#dateOfBirthFld").val();
 
-        var user={
+        /*var user={
             username:$usernameFld,
+            firstName:$firstNameFld,
+            lastName:$lastNameFld,
             phone:$phoneFld,
             email:$emailFld,
             role:$roleFld,
             dateOfBirth:$dateOfBirthFld
-        };
+        };*/
 
-        //console.log(user.username);
+        var user=new User($usernameFld,null,$emailFld,$firstNameFld,$lastNameFld,$phoneFld,$roleFld,$dateOfBirthFld);
+
         userService.updateProfile(user).then(function (response) {
             return response.text();
         }).then(function(text){
@@ -45,21 +50,31 @@
 
     function renderUser(user){
         $("#usernameFld").val(user.username);
+        $("#firstNameFld").val(user.firstName);
+        $("#lastNameFld").val(user.lastName);
         $("#phoneFld").val(user.phone);
         $("#emailFld").val(user.email);
         $("#roleFld").val(user.role);
-        $("#dateOfBirthFld").val(user.dateOfBirth);
+
+        var dob=user.dateOfBirth;
+        if(dob!=null) {
+            var position = dob.indexOf('T');
+            if (position > 0) {
+                var time = dob.substring(0, position);
+                $("#dateOfBirthFld").val(time);
+            }
+        }
     }
 
     function success(length){
         if(length>0)
-            alert("Profile Updated Successfully!");
+            $("#saved").css("display","block");
         else
-            alert("Profile cannot be Updated!");
+            $("#cannotSave").css("display","block");
     }
 
     function logout() {
-        alert("logged out successfully!");
+        $("#Logged").css("display","block");
         window.location.href="../login/login.template.client.html";
     }
 

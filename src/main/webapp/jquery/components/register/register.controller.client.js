@@ -5,20 +5,34 @@
     $(main);
 
     function main() {
-        $registerBtn=$("#registerBtn").click(register);
+        $registerBtn=$("#registerBtn").click(validation);
         $usernameFld=$("#usernameFld");
         $passwordFld=$("#passwordFld");
         $verifyPasswordFld=$("#verifyPasswordFld");
     }
-    function register() {
+
+    function validation(){
         $usernameFld=$("#usernameFld").val();
         $passwordFld=$("#passwordFld").val();
         $verifyPasswordFld=$("#verifyPasswordFld").val();
 
-        var user={
+        if($passwordFld!=$verifyPasswordFld){
+            $("#matchPassword").css("display","block");
+        }
+        else{
+            register();
+        }
+    }
+
+    function register() {
+
+
+        /*var user={
             username:$usernameFld,
             password:$passwordFld,
-        };
+        };*/
+
+        var user=new User($usernameFld,$passwordFld,null,null,null,null,null,null);
 
         userService.register(user).then(function (response) {
             return response.text();
@@ -29,10 +43,15 @@
     }
 
     function success(length){
-        if(length>0)
-            alert("Registered Successfully!");
-        else
-            alert("User already exists");
+        if(length>0) {
+            $("#matchPassword").css("display","none");
+            $("#creation").css("display", "block");
+        }
+        else{
+            $("#matchPassword").css("display","none");
+            $("#cannotCreate").css("display","block");
+        }
+
     }
 
 

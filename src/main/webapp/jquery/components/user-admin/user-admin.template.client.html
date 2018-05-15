@@ -6,47 +6,47 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href=
             "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
-
+    <link href="user-admin.style.client.css" rel="stylesheet" />
+    <script src="../../models/user.model.client.js"></script>
     <script src="../../services/user.service.client.js"></script>
     <script src="user-admin.controller.client.js"></script>
 
 </head>
 <body>
     <div class="container">
-    <h1 id="title">User-Admin</h1>
+    <h1 id="title" style="color: white"><i class="fa fa-user fa-2x"></i>User-Admin</h1>
 
-    <table class="table">
+
+    <table class="table web-dev-table table-hover">
         <thead>
-        <tr>
+        <tr class="tr-head">
             <th>Username</th>
             <th>Password</th>
             <th>First Name</th>
             <th>Last Name</th>
             <th>Role</th>
-            <th>&nbsp;</th>
+            <th>&nbsp</th>
         </tr>
         <tr class="wbdv-form">
-            <td><input id="usernameFld" class="form-control"
+            <td><input id="usernameFld" class="form-control web-dev-form"
                        placeholder="Username" /></td>
-            <td><input id="passwordFld" class="form-control"
+            <td><input id="passwordFld" class="form-control web-dev-form"
                        placeholder="Password" /></td>
-            <td><input id="firstNameFld" class="form-control"
+            <td><input id="firstNameFld" class="form-control web-dev-form"
                        placeholder="First Name" /></td>
-            <td><input id="lastNameFld" class="form-control"
+            <td><input id="lastNameFld" class="form-control web-dev-form"
                        placeholder="Last Name" /></td>
-            <td><select id="roleFld" class="form-control">
-                <option value="FACULTY">Faculty</option>
+            <td><select id="roleFld" class="form-control web-dev-form">
+                <option value="FACULTY" >Faculty</option>
                 <option value="STUDENT">Student</option>
             </select></td>
             <td><span class="float-right" style="white-space: nowrap">
-                <button class="search btn"><i class="fa-2x fa fa-search wbdv-search"></i></button>
-                <button class="create btn"><i class="fa-2x fa fa-plus wbdv-create"></i></button>
-                <button class="update btn"><i class="fa-2x fa fa-check wbdv-update"></i></button>
+                <button class="search btn" style="background:black"><i class="fa-2x fa fa-search wbdv-search" style="color:cornflowerblue"></i></button>
+                <button class="create btn" style="background:black"><i class="fa-2x fa fa-plus wbdv-create" style="color:green"></i></button>
+                <button class="update btn" style="background:black"><i class="fa-2x fa fa-check wbdv-update" style="color:orange"></i></button>
             </span></td>
         </tr>
-
         </thead>
-        <tbody>
         <tbody class="wbdv-tbody">
         <tr class="wbdv-template wbdv-user wbdv-hidden">
             <td class="wbdv-username">ada</td>
@@ -56,8 +56,8 @@
             <td class="wbdv-role">FACULTY</td>
             <td class="wbdv-actions">
         <span class="float-right">
-          <button class="remove btn"><i id="wbdv-remove" class="fa-2x fa fa-times wbdv-remove"></i></button>
-          <button class="edit btn"><i id="wbdv-edit" class="fa-2x fa fa-pencil wbdv-edit"></i></button>
+          <button class="remove btn" style="background:black"><i id="wbdv-remove" class="fa-2x fa fa-times wbdv-remove" style="color:red"></i></button>
+          <button class="edit btn" style="background:black"><i id="wbdv-edit" class="fa-2x fa fa-pencil wbdv-edit" style="color:saddlebrown"></i></button>
         </span>
             </td>
         </tr>
