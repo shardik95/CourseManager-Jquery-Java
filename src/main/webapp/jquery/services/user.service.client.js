@@ -15,7 +15,12 @@ function UserServiceClient(){
     this.profileUrl='http://localhost:8080/api/profile';
     var self = this;
 
-
+    /**
+     * Service to update the User
+     * @param userId - userid
+     * @param user - User
+     * @returns {Promise<Response>}
+     */
     function updateUser(userId,user){
         return fetch(self.url+"/"+userId,{
             method:'put',
@@ -26,7 +31,11 @@ function UserServiceClient(){
         });
     }
 
-
+    /**
+     * Service to login the user
+     * @param user
+     * @returns {Promise<Response>}
+     */
     function login(user) {
         return fetch(self.loginUrl, {
             method: 'post',
@@ -38,7 +47,11 @@ function UserServiceClient(){
         });
     }
 
-
+    /**
+     * Function to register the user
+     * @param user
+     * @returns {Promise<Response>}
+     */
     function register(user){
         return fetch(self.registerUrl, {
             method: 'post',
@@ -50,7 +63,11 @@ function UserServiceClient(){
         });
     }
 
-
+    /**
+     * Service to update the profile
+     * @param user
+     * @returns {Promise<Response>}
+     */
     function updateProfile(user){
         return fetch(self.profileUrl ,{
             method: 'put',
@@ -62,6 +79,11 @@ function UserServiceClient(){
 
     }
 
+    /**
+     * Service to find User by Id
+     * @param userId
+     * @returns {Promise<any>}
+     */
     function findUserById(userId){
         return fetch(self.url +'/'+userId)
             .then(function (response) {
@@ -69,12 +91,22 @@ function UserServiceClient(){
         });
     }
 
+    /**
+     * Service to delete the user
+     * @param userId
+     * @returns {Promise<Response>}
+     */
     function deleteUser(userId){
         return fetch(self.url +'/'+userId,{
             method:'delete'
         })
     }
 
+    /**
+     * function to createUser
+     * @param user
+     * @returns {Promise<Response>}
+     */
     function createUser(user){
         return fetch(self.url, {
 
@@ -87,6 +119,10 @@ function UserServiceClient(){
         });
     }
 
+    /**
+     * Function to find all users
+     * @returns {Promise<any>}
+     */
     function findAllUsers(){
         return fetch(self.url)
             .then(function (response) {

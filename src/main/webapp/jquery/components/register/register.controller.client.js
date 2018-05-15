@@ -4,6 +4,9 @@
     var userService = new UserServiceClient();
     $(main);
 
+    /**
+     * DOM on ready function
+     */
     function main() {
         $registerBtn=$("#registerBtn").click(validation);
         $usernameFld=$("#usernameFld");
@@ -11,6 +14,9 @@
         $verifyPasswordFld=$("#verifyPasswordFld");
     }
 
+    /**
+     * Function to validate password
+     */
     function validation(){
         $usernameFld=$("#usernameFld").val();
         $passwordFld=$("#passwordFld").val();
@@ -24,13 +30,10 @@
         }
     }
 
+    /**
+     * Function when sign up button is clicked
+     */
     function register() {
-
-
-        /*var user={
-            username:$usernameFld,
-            password:$passwordFld,
-        };*/
 
         var user=new User($usernameFld,$passwordFld,null,null,null,null,null,null);
 
@@ -42,6 +45,10 @@
 
     }
 
+    /**
+     * Function when user register successfully or unsuccessfully
+     * @param length
+     */
     function success(length){
         if(length>0) {
             $("#matchPassword").css("display","none");

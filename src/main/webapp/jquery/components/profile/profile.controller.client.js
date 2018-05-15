@@ -5,9 +5,11 @@
 
     $(init);
 
-
     var userService=new UserServiceClient();
 
+    /**
+     * DOM on-ready function
+     */
     function init() {
         var query=window.location.search.substring(1);
         var pos = query.indexOf('=');
@@ -20,6 +22,10 @@
 
     };
 
+    /**
+     * function when update profile is clicked
+     * created JSON object and calls service updateProfile
+     */
     function updateProfile(){
         $usernameFld=$("#usernameFld").val();
         $firstNameFld=$("#firstNameFld").val();
@@ -28,16 +34,6 @@
         $emailFld=$("#emailFld").val();
         $roleFld=$("#roleFld").val();
         $dateOfBirthFld= $("#dateOfBirthFld").val();
-
-        /*var user={
-            username:$usernameFld,
-            firstName:$firstNameFld,
-            lastName:$lastNameFld,
-            phone:$phoneFld,
-            email:$emailFld,
-            role:$roleFld,
-            dateOfBirth:$dateOfBirthFld
-        };*/
 
         var user=new User($usernameFld,null,$emailFld,$firstNameFld,$lastNameFld,$phoneFld,$roleFld,$dateOfBirthFld);
 
@@ -48,6 +44,10 @@
         }).then(success);
     }
 
+    /**
+     * Function to populate the form with the user
+     * @param user
+     */
     function renderUser(user){
         $("#usernameFld").val(user.username);
         $("#firstNameFld").val(user.firstName);
@@ -66,6 +66,10 @@
         }
     }
 
+    /**
+     * success function for successful profile update or unsuccessful
+     * @param length - length of the response from server
+     */
     function success(length){
         if(length>0)
             $("#saved").css("display","block");
@@ -73,6 +77,9 @@
             $("#cannotSave").css("display","block");
     }
 
+    /**
+     * Function for logout, navigates to sign in page.
+     */
     function logout() {
         $("#Logged").css("display","block");
         window.location.href="../login/login.template.client.html";

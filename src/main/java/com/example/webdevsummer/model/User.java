@@ -1,7 +1,5 @@
 package com.example.webdevsummer.model;
 
-
-
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -9,6 +7,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+/**
+ * Model User that is used to retrieve data from database
+ * using the JPA 
+ * @author hardikshah
+ *
+ */
 @Entity
 public class User {
 

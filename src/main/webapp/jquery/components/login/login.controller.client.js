@@ -1,10 +1,13 @@
 (function () {
     var $usernameFld, $passwordFld;
-    var $loginBtn, $userdata;
+    var $loginBtn, $userData;
     var userService = new UserServiceClient();
 
     $(main);
 
+    /**
+     * DOM on ready function
+     */
     function main() {
         $usernameFld=$("#username");
         $passwordFld=$("#password");
@@ -13,17 +16,15 @@
 
     }
 
-
+    /**
+     * login on click function
+     * created json object,calls user service login
+     */
     function login() {
         $usernameFld=$("#username").val();
         $passwordFld=$("#password").val();
 
         var user=new User($usernameFld,$passwordFld,null,null,null,null,null,null);
-
-        /*var user ={
-            username:$usernameFld,
-            password:$passwordFld
-        };*/
 
         userService.login(user).then(function (response) {
             var text=response.text();
@@ -33,16 +34,20 @@
             if(len>0) {
                 var json = JSON.parse(text);
                 console.log(json);
-                $userdata=json.id;
+                $userData=json.id;
             }
             return len;
         }).then(success);
 
     }
 
+    /**
+     * success function when user logged in successfully or unsuccessfully
+     * @param length - length of the data
+     */
     function success(length){
         if(length>0){
-            window.location.href = "../profile/profile.template.client.html?userid="+$userdata;
+            window.location.href = "../profile/profile.template.client.html?userid="+$userData;
         }
         else
             $("#cannotLogin").css("display","block");
