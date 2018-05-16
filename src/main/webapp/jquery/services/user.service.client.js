@@ -8,11 +8,11 @@ function UserServiceClient(){
     this.login = login;
     this.updateUser=updateUser;
     this.url =
-        'http://localhost:8080/api/user';
+        '/api/user';
     this.registerUrl =
-        'http://localhost:8080/api/register';
-    this.loginUrl='http://localhost:8080/api/login';
-    this.profileUrl='http://localhost:8080/api/profile';
+        '/api/register';
+    this.loginUrl='/api/login';
+    this.profileUrl='/api/profile';
     var self = this;
 
     /**
