@@ -23,6 +23,8 @@ public class Widget {
 	private String linkUrl;
 	private String linkText;
 	private String imageUrl;
+	private String listText;
+	private String listType;
 	
 	@ManyToOne
 	@JsonIgnore
@@ -88,6 +90,18 @@ public class Widget {
 	}
 	public void setImageUrl(String imageUrl) {
 		this.imageUrl = imageUrl;
+	}
+	public String getListText() {
+		return listText;
+	}
+	public void setListText(String listText) {
+		this.listText = listText;
+	}
+	public String getListType() {
+		return listType;
+	}
+	public void setListType(String listType) {
+		this.listType = listType;
 	}
 	
 	
