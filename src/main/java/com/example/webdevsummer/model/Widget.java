@@ -18,6 +18,11 @@ public class Widget {
 	private String text;
 	private String widgetType;
 	private int size;
+	private String widgetName;
+	private String paragraphText;
+	private String linkUrl;
+	private String linkText;
+	private String imageUrl;
 	
 	@ManyToOne
 	@JsonIgnore
@@ -54,6 +59,36 @@ public class Widget {
 		this.topic = topic;
 	}
 	
+	public String getWidgetName() {
+		return widgetName;
+	}
+	public void setWidgetName(String widgetName) {
+		this.widgetName = widgetName;
+	}
+	public String getParagraphText() {
+		return paragraphText;
+	}
+	public void setParagraphText(String paragraphText) {
+		this.paragraphText = paragraphText;
+	}
+	public String getLinkUrl() {
+		return linkUrl;
+	}
+	public void setLinkUrl(String linkUrl) {
+		this.linkUrl = linkUrl;
+	}
+	public String getLinkText() {
+		return linkText;
+	}
+	public void setLinkText(String linkText) {
+		this.linkText = linkText;
+	}
+	public String getImageUrl() {
+		return imageUrl;
+	}
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
 	
 	
 }
