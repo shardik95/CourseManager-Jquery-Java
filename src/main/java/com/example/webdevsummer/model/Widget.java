@@ -10,7 +10,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @Entity
-public class Widget {
+public class Widget implements Comparable<Widget>{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -25,6 +25,8 @@ public class Widget {
 	private String imageUrl;
 	private String listText;
 	private String listType;
+	private int orderWidget;
+	
 	
 	@ManyToOne
 	@JsonIgnore
@@ -103,6 +105,17 @@ public class Widget {
 	public void setListType(String listType) {
 		this.listType = listType;
 	}
+	@Override
+	public int compareTo(Widget o) {
+		return this.getOrderWidget()-o.getOrderWidget();
+	}
+	public int getOrderWidget() {
+		return orderWidget;
+	}
+	public void setOrderWidget(int orderWidget) {
+		this.orderWidget = orderWidget;
+	}
+	
 	
 	
 }

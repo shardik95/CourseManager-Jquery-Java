@@ -1,5 +1,6 @@
 package com.example.webdevsummer.services;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -56,7 +57,9 @@ public class WidgetService {
 		Optional<Topic> data = topicRepository.findById(topicId);
 		if(data.isPresent()) {
 			Topic topic = data.get();
-			return topic.getWidgets();
+			List<Widget> widgets= topic.getWidgets();
+			Collections.sort(widgets);
+			return widgets;
 		}
 		return null;	
 	}
