@@ -10,45 +10,63 @@ import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-
 @Entity
 @Inheritance(strategy=InheritanceType.JOINED)
-public class Widget{
+public class Question {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	private String text;
-	private String widgetType;
-	
 	@ManyToOne
 	@JsonIgnore
-	private Topic topic;
+	private ExamWidget exam;
 	
+	private String title;
+	private String description;
+	private int points;
+
+
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getWidgetType() {
-		return widgetType;
+	
+	public ExamWidget getExam() {
+		return exam;
 	}
-	public void setWidgetType(String widgetType) {
-		this.widgetType = widgetType;
+
+	public void setExam(ExamWidget exam) {
+		this.exam = exam;
 	}
-	public Topic getTopic() {
-		return topic;
+
+	public String getTitle() {
+		return title;
 	}
-	public void setTopic(Topic topic) {
-		this.topic = topic;
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
-	public String getText() {
-		return text;
+
+	public String getDescription() {
+		return description;
 	}
-	public void setText(String text) {
-		this.text = text;
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public int getPoints() {
+		return points;
+	}
+
+	public void setPoints(int points) {
+		this.points = points;
 	}
 	
+	
 
+	
 }
