@@ -24,7 +24,17 @@ public class Question {
 	private String title;
 	private String description;
 	private int points;
+	private String subtitle;
 
+	
+	
+	public String getSubtitle() {
+		return subtitle;
+	}
+
+	public void setSubtitle(String subtitle) {
+		this.subtitle = subtitle;
+	}
 
 	public int getId() {
 		return id;

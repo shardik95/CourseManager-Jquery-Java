@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.webdevsummer.model.AssignmentWidget;
+import com.example.webdevsummer.model.ExamWidget;
 import com.example.webdevsummer.model.Topic;
 import com.example.webdevsummer.model.Widget;
 import com.example.webdevsummer.repositories.AssignmentWidgetRepository;
@@ -54,7 +55,10 @@ public class AssignmentService {
 			 while(itr.hasNext()) {
 				 Widget wid=itr.next();
 				 if(wid.getWidgetType().equals("Assignment")) {
-					 assignment.add((AssignmentWidget) wid);
+					 Optional<AssignmentWidget> assgn=assignmentRepository.findById(wid.getId());
+					 if(assgn.isPresent()) {
+						 assignment.add(assgn.get());
+					 }
 				 }
 			 }
 			 return assignment;

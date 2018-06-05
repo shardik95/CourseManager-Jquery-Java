@@ -9,11 +9,21 @@ import javax.persistence.OneToMany;
 @Entity
 public class ExamWidget extends Widget {
 
-
+	private String title;
+	
 	@OneToMany(mappedBy="exam",cascade=CascadeType.REMOVE,orphanRemoval=true)
 	private List<Question> questions;
 
 	
+	
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
 	public List<Question> getQuestions() {
 		return questions;
 	}
