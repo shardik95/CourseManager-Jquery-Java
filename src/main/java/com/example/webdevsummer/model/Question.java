@@ -25,9 +25,19 @@ public class Question {
 	private String description;
 	private int points;
 	private String subtitle;
+	private String questionType;
+	
+	
+	
+	
+	public String getQuestionType() {
+		return questionType;
+	}
 
-	
-	
+	public void setQuestionType(String questionType) {
+		this.questionType = questionType;
+	}
+
 	public String getSubtitle() {
 		return subtitle;
 	}
