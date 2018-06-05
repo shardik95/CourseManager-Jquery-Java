@@ -6,8 +6,11 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.webdevsummer.model.AssignmentWidget;
@@ -24,6 +27,15 @@ public class AssignmentService {
 	
 	@Autowired
 	private TopicRepository topicRepository;
+	
+	@GetMapping("/api/assignment/{aid}")
+	public AssignmentWidget getAssignmentById(@PathVariable("aid") int aid) {
+		Optional<AssignmentWidget> data=assignmentRepository.findById(aid);
+		if(data.isPresent()) {
+			return data.get();
+		}
+		return null;
+	}
 		
 	@GetMapping("api/assignment")
 	public List<AssignmentWidget> findAllAssignments(){
@@ -36,7 +48,6 @@ public class AssignmentService {
 		 List<AssignmentWidget> assignment=new ArrayList<>();
 		 if(data.isPresent()) {
 			 Topic topic=data.get();
-			 //System.out.println(topic);
 			 List<Widget> widgets=topic.getWidgets();
 			 Iterator<Widget> itr=widgets.iterator();
 			 while(itr.hasNext()) {
@@ -45,10 +56,25 @@ public class AssignmentService {
 					 assignment.add((AssignmentWidget) wid);
 				 }
 			 }
-			 System.out.println(assignment.size());
 			 return assignment;
 		 }
 		 return null;
 	}
 	
+	@PostMapping("api/topic/{topicId}/assignment")
+	public AssignmentWidget addAssignment(@PathVariable("topicId") int topicId, 
+			@RequestBody AssignmentWidget assignmentWidget) {
+		 Optional<Topic> data = topicRepository.findById(topicId);
+		 if(data.isPresent()) {
+			 Topic topic=data.get();
+			 assignmentWidget.setTopic(topic);
+			 return assignmentRepository.save(assignmentWidget);
+		 }
+		 return null;
+	}
+	
+	@DeleteMapping("api/assignment/{aid}")
+	public void deleteAssignment(@PathVariable("aid") int aid) {
+		assignmentRepository.deleteById(aid);
+	}
 }
