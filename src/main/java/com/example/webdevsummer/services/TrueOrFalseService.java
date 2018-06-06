@@ -43,7 +43,7 @@ public class TrueOrFalseService {
 			tf.setDescription(newTF.getDescription());
 			tf.setSubtitle(newTF.getSubtitle());
 			tf.setPoints(newTF.getPoints());
-			tf.setTrue(newTF.isTrue());
+			tf.setIsTrue(newTF.getIsTrue());
 			tfRepository.save(tf);
 			return tf;
 		}

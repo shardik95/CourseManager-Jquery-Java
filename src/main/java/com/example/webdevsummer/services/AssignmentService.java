@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.webdevsummer.model.AssignmentWidget;
-import com.example.webdevsummer.model.ExamWidget;
 import com.example.webdevsummer.model.Topic;
 import com.example.webdevsummer.model.Widget;
 import com.example.webdevsummer.repositories.AssignmentWidgetRepository;
