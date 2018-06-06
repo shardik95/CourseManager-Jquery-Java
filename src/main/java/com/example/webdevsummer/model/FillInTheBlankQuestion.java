@@ -6,6 +6,16 @@ import javax.persistence.Entity;
 public class FillInTheBlankQuestion extends Question {
 		
 	private String variables;
+	private String fib;
+	
+
+	public String getFib() {
+		return fib;
+	}
+
+	public void setFib(String fib) {
+		this.fib = fib;
+	}
 
 	public String getVariables() {
 		return variables;
