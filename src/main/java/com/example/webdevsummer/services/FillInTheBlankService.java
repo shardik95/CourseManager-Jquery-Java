@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.webdevsummer.model.ExamWidget;
 import com.example.webdevsummer.model.FillInTheBlankQuestion;
-import com.example.webdevsummer.model.TrueOrFalseQuestion;
 import com.example.webdevsummer.repositories.ExamWidgetRepository;
 import com.example.webdevsummer.repositories.FillInTheBlankRepository;
 
